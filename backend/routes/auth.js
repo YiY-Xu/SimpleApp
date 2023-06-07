@@ -26,11 +26,11 @@ router.post('/signup', async (req, res) => {
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, user, info) => {
     if (err) {
-      return res.status(500).json({ message: 'An error occurred', error: err.message });
+        return res.status(500).json({ message: 'An error occurred', error: err.message });
     }
 
     if (!user) {
-      return res.status(401).json({ message: 'Authentication failed', error: info.message });
+        return res.status(401).json({ message: 'Authentication failed', error: info.message });
     }
 
     const token = jwt.sign({ userId: user.id }, 'secret-key', { expiresIn: '1h' });

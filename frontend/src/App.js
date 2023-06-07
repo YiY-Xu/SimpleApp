@@ -44,10 +44,11 @@ function App() {
         token,
         inputString: inputString,
       });
-      console.log(response.data.username);
-      setQueryResult(response.data.username);
+      alert(JSON.stringify(response.data));
+      setQueryResult(response.data.choices[0].text);
     } catch (error) {
-      alert('Query failed');
+      alert(JSON.stringify(error));
+      setQueryResult(error.data.message);
     }
   };
 
